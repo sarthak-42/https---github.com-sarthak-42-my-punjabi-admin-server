@@ -5,7 +5,7 @@ const noteRouter = require('./routes/noteRoutes');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
 
