@@ -10,6 +10,21 @@ const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
 
 const PORT = process.env.PORT
+app.use(express.json())
+
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Credentials', 'true'); // If your requests include credentials
+  
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+    } else {
+      next();
+    }
+  });
 
 // const multer = require('multer')
 // const storage = multer.diskStorage({
@@ -27,14 +42,9 @@ const PORT = process.env.PORT
 
 
 // Express.js example
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    // other headers...
-    next();
-  });
+
   
 
-app.use(express.json())
 app.use('/api/users', userRouter)
 // app.use('/notes', noteRouter)
 app.use('/api/news', newsRouter )
