@@ -9,16 +9,16 @@ const app = express();
 const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
 
-const PORT = process.env.PORT
-app.use(express.json())
-
-
 const corsOptions = {
     origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   };
   
+const PORT = process.env.PORT
+app.use(express.json())
+
+
   app.use(cors(corsOptions));
   app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
