@@ -21,6 +21,7 @@ app.use(express.json())
 
 
   app.use(cors(corsOptions));
+  app.options('*', cors(corsOptions));
   app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // const multer = require('multer')
