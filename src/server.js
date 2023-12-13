@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const userRouter = require('./routes/userRoutes');
 const noteRouter = require('./routes/noteRoutes');
@@ -7,7 +8,6 @@ const app = express();
 app.use(cors());
 const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
-require('dotenv').config() 
 
 const PORT = process.env.PORT
 
@@ -26,7 +26,13 @@ const PORT = process.env.PORT
 
 
 
-
+// Express.js example
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    // other headers...
+    next();
+  });
+  
 
 app.use(express.json())
 app.use('/api/users', userRouter)
