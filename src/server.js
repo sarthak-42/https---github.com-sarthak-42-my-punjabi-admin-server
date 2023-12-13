@@ -1,9 +1,11 @@
 const express = require('express');
 const userRouter = require('./routes/userRoutes');
 const noteRouter = require('./routes/noteRoutes');
-const app = express();
-const mongoose = require('mongoose')
 const cors = require('cors');
+const app = express();
+
+app.use(cors());
+const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
 require('dotenv').config() 
 
@@ -26,7 +28,6 @@ const PORT = process.env.PORT
 
 
 
-app.use(cors());
 app.use(express.json())
 app.use('/api/users', userRouter)
 // app.use('/notes', noteRouter)
@@ -50,7 +51,7 @@ app.get('/',(req,res)=>{
 
 // const upload = multer({ dest: 'uploads/' })
 
-
+ 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     app.listen(PORT , ()=>{
     console.log(`Server is running on port ${PORT}`);
