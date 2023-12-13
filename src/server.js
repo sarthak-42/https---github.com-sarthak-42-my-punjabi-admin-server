@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const userRouter = require('./routes/userRoutes');
+const bodyParser = require('body-parser')
 const noteRouter = require('./routes/noteRoutes');
 const cors = require('cors');
 const app = express();
-
 // app.use(cors());
 const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
@@ -20,6 +20,8 @@ const corsOptions = {
   };
   
   app.use(cors(corsOptions));
+  app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 // const multer = require('multer')
 // const storage = multer.diskStorage({
 //     destination:  (req, file, cb)=> {
