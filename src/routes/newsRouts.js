@@ -4,7 +4,7 @@ const {imageUploadMiddleware} = require('../middlewares/imageUpload')
 // const { model } = require('mongoose');
 const newsRouter = express.Router();
 
-newsRouter.post('/addNews', addNews);
+newsRouter.post('/addNews', imageUploadMiddleware('image'), addNews);
 
 
 module.exports = newsRouter

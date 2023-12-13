@@ -16,12 +16,12 @@ const corsOptions = {
     optionsSuccessStatus: 204,
   };
   
-const PORT = process.env.PORT
-app.use(express.json())
-
-
-  app.use(cors(corsOptions));
-  app.options('*', cors(corsOptions));
+  const PORT = process.env.PORT
+  
+  
+  app.use(cors());
+  app.use(express.json())
+  app.use(express.urlencoded({extended: false}))
   app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // const multer = require('multer')
@@ -46,7 +46,6 @@ app.use(bodyParser.json());
 app.use('/api/users', userRouter)
 // app.use('/notes', noteRouter)
 app.use('/api/news', newsRouter )
-app.use(express.urlencoded({extended: false}))
 
 app.get('/',(req,res)=>{
     res.send("Hello World");
@@ -75,3 +74,4 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log(error)
 })
 
+ 
