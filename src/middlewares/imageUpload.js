@@ -48,7 +48,7 @@ const imageUploadMiddleware = (fieldName) => (req, res, next) => {
     upload.single(fieldName)(req, res, (err) => {
       if (err) {
         // Handle multer error
-        console.error("Multer error:", err.stack);
+        console.error("Multer error:", err);
         res.status(500).json({ error: "File upload failed" });
         console.log()
       } else {
