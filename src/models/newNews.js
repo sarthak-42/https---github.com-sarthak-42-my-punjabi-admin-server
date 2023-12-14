@@ -10,7 +10,7 @@ const NewsSchema = mongoose.Schema({
         required: false
     },
     img:{
-            type: String,
+            type: Buffer,
             required: false
     },
     category:{
