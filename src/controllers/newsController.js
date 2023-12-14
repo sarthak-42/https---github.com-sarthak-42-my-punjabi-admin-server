@@ -1,9 +1,9 @@
 const newsModel = require('../models/newNews')
 const addNews = async(req, res)=>{
     const {title, description, category, videoUrl} = req.body
-    const image = req.file.name;
-    // console.log(req.body)
-    // console.log('image path-',req.file.path)
+    const image = req.file.filename;
+    console.log(req.body)
+    console.log('image path-', req.file.filename)
     try {
         const createNews = await newsModel.create({
             title: title,
@@ -13,7 +13,7 @@ const addNews = async(req, res)=>{
             videoUrl: videoUrl
             
         }
-        
+         
         )
         console.log('news created')
         res.status(201).json({news: createNews})

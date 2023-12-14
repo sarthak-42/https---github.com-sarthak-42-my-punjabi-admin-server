@@ -7,4 +7,4 @@ const newsRouter = express.Router();
 newsRouter.post('/addNews', imageUploadMiddleware('image'), addNews);
 
 
-module.exports = newsRouter
+module.exports = newsRouter 
