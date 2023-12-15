@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
 
 const corsOptions = {
-    origin: "https://main--comforting-valkyrie-b02cf8.netlify.app/login",
+    origin: "https://main--comforting-valkyrie-b02cf8.netlify.app",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,
