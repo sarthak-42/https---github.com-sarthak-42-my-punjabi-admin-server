@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: "*",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,
