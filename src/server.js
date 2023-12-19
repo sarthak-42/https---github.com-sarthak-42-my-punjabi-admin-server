@@ -8,9 +8,10 @@ const app = express();
 // app.use(cors());
 const mongoose = require('mongoose')
 const newsRouter = require('./routes/newsRouts');
+const categoryRouter = require('./routes/categoryRoute');
 
 const corsOptions = {
-    origin: "https://main--comforting-valkyrie-b02cf8.netlify.app",
+    origin: "*",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,
@@ -48,6 +49,7 @@ app.use(bodyParser.json());
 app.use('/api/users', userRouter)
 // app.use('/notes', noteRouter)
 app.use('/api/news', newsRouter )
+app.use('/api/category', categoryRouter)
 
 app.get('/',(req,res)=>{
     res.send("Hello World");

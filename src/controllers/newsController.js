@@ -22,7 +22,32 @@ const addNews = async(req, res)=>{
         res.status(500).json({message: "Something went wrong"})
     }
 }
-module.exports = {addNews}
+
+const getAllNews=async(req,res)=> { 
+    // console.log("token",req.user.id);
+    let pageSize = +req.query.pagesize || 6;
+    let currentPage = +req.query.pagenum || 1;
+    if (pageSize > 100){
+        pageSize = 100;
+        }
+        const totalNewsCount =await newsModel.countDocuments();
+        const news = await newsModel.find()
+        .skip((currentPage - 1)*pageSize)
+        .limit(pageSize)
+        .sort({_id:-1});
+        /* if(!req.user.isAdmin){
+            news.forEach(item => delete item.isApproved);
+            }*/
+            console.log(totalNewsCount);
+            res.status(200).json({
+                totalPages: Math.ceil(totalNewsCount / pageSize),
+                currentPage: currentPage,
+                newsPerPage: pageSize,
+                totalItems: totalNewsCount,
+                news: news
+                })
+                };
+module.exports = {addNews , getAllNews}
 
 
 
